@@ -18,6 +18,13 @@ You need a FreeScout installation and the Workflow Module installed.
 - Save a copy of your "Modules/Workflows" directory so that you can easily revert to the original.
 - To define the default user used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file:
  WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
+ **NOTE:** A User with this email /must/ exist in your FreeScout environment.
+ Instead of using a real user's account, you may create a special account specifically for your workflows. For example:
+  - First name: Bob
+  - Last name: Doit
+  - Email: bob.doit@yourdomain.com
+  - Position: Support
+  - ...
 - Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
 The following files will be replaced:
   - Config/config.php
@@ -26,13 +33,6 @@ The following files will be replaced:
 
 ## Note
 If you have workflows that should not be associated with an existing user, it's advisable not to use this patch.
-
-Instead of using a real user's account, you may create a special account specifically for your workflows. For example:
-- First name: Bob
-- Last name: Doit
-- Email: bob.doit@yourdomain.com
-- Position: Support
-- ...
 
 To undo this patch, use your backup.
 
