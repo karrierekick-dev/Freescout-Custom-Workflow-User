@@ -17,6 +17,8 @@ class Workflow extends Model
     // This is obligatory.
     public $rememberCacheDriver = 'array';
 
+    public static $userRunningTheWorkflow = null;
+
     const TYPE_AUTOMATIC = 1;
 	const TYPE_MANUAL    = 2;
 
@@ -694,7 +696,7 @@ class Workflow extends Model
     /**
      * Run manually.
      */
-    public function runManually($conversation)
+    public function runManually($conversation, $userRunningTheWorkflow=null)
     {
         // $workflow = Workflow::find($workflow_id);
 
@@ -702,11 +704,16 @@ class Workflow extends Model
         //     return false;
         // }
 
+        if ($userRunningTheWorkflow)
+            self::$userRunningTheWorkflow = $userRunningTheWorkflow;
+
         if (!$conversation) {
             return false;
         }
 
-        $this->performActions($conversation);
+        $this->performActions($conversation, $userRunningTheWorkflow);
+
+        self::$userRunningTheWorkflow = null;
     }
 
     public static function getConditionConfig($type, $mailbox_id)
@@ -1379,6 +1386,13 @@ class Workflow extends Model
      */
     public static function getUser()
     {
+        if (self::$userRunningTheWorkflow)
+            return self::$userRunningTheWorkflow;
+
+        $email = config('workflows.user_email');
+        if ($email)
+            return User::where('email', $email)->first();
+
         if (!empty(self::$wf_user)) {
             return self::$wf_user;
         }

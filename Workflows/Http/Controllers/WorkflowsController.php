@@ -247,7 +247,7 @@ class WorkflowsController extends Controller
 
                         $prev_mailbox_id = $conversation->mailbox_id;
 
-                        $workflow->runManually($conversation);
+                        $workflow->runManually($conversation, $user);
 
                         // If conversation moved to another mailbox, check permissions.
                         if ($prev_mailbox_id != $conversation->mailbox_id) {
