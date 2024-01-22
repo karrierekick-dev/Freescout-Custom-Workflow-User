@@ -20,9 +20,9 @@ You need a FreeScout installation and the Workflow Module installed.
  WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
 - Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
 The following files will be replaced:
-- Config/config.php
-- Entities/Workflow.php
-- Http/Controllers/WorkflowsController.php
+  - Config/config.php
+  - Entities/Workflow.php
+  - Http/Controllers/WorkflowsController.php
 
 ## Note
 If you have workflows that should not be associated with an existing user, it's advisable not to use this patch.
