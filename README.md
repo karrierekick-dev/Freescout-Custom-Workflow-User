@@ -1,3 +1,5 @@
+
+
 # Freescout Custom Workflow User
 This is a collection of files to patch the original [FreeScout Workflow Module](https://freescout.net/module/workflows/).
 
@@ -15,18 +17,19 @@ It will bring 2 enhancements
 You need a FreeScout installation and the Workflow Module being installed.
 
 # Installation
-* Please save a copy of your Modules/Workflows folder so you may easily go back to the original.
+* Please save a copy of your "Modules/Workflows" directory so you may easily go back to the original.
 * To define the default user which will be used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file
   WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
-* Copy the files from this repository's Workflows directory into the Modules/Workflows directory of your FreeScout installation. The following files will be replaced
- * Config/config.php
- * Entities/Workflow.php
- * Http/Controllers/WorkflowsController.php
+* Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
+The following files will be replaced
+  * Config/config.php
+  * Entities/Workflow.php
+  * Http/Controllers/WorkflowsController.php
 
 # Note
 If you have Workflows which should not be related to an existing user, you should not use this patch.
 
-Instead of using a real users account, you may create a special account only for your workflows. Like 
+Instead of using a real users account, you may create a special account only for your workflows. Something like 
 first name: Bob 
 last name: Doit
 email: bob.doit@yourdomain.com
@@ -35,4 +38,6 @@ position: Support
 
 To undo this patch, use your backup.
 
-Have fun
+**Have fun**
+
+
