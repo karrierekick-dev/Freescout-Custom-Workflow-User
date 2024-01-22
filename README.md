@@ -38,6 +38,8 @@ position: Support
 
 To undo this patch, use your backup.
 
+To see the actual changes to the original look [here](https://github.com/karrierekick-dev/freescout-custom-workflow-user/commit/bba3e06f98ca86e6e02e1f10977124d305541eab)
+
 **Have fun**
 
 
