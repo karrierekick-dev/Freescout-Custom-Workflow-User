@@ -7,7 +7,7 @@ The original Workflow Module uses a user named "Workflow" to execute all actions
 You can alter the name in the .env file using the property WORKFLOWS_USER_FULL_NAME, but this has a few limitations. It only allows up to 20 characters, and additional settings, such as an email address, cannot be defined. As a result, signatures using variables like user.email are not displayed correctly. Additionally, when manually executing a workflow, the "Workflow" user is used instead of the user who initiated the workflow.
 
 ## What
-This brings two enhancements:
+This patch brings two enhancements:
 - Define an existing user as the default user for all your automated workflows.
 - Manual workflows will use the logged-in user running the workflow task as the sender.
 
