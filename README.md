@@ -14,22 +14,25 @@ This patch brings two enhancements:
 ## Requirements
 You need a FreeScout installation and the Workflow Module installed.
 
+
 ## Installation
-- Save a copy of your "Modules/Workflows" directory so that you can easily revert to the original.
-- To define the default user used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file:
+
+1. Save a copy of your "Modules/Workflows" directory so that you can easily revert to the original.
+2. To define the default user used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file:
  WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
- **NOTE:** A User with this email /must/ exist in your FreeScout environment.
- Instead of using a real user's account, you may create a special account specifically for your workflows. For example:
-  - First name: Bob
-  - Last name: Doit
-  - Email: bob.doit@yourdomain.com
-  - Position: Support
-  - ...
-- Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
+ 
+	 **NOTE:** A User with this email *must* exist in your FreeScout environment.
+	 Instead of using a real user's account, you may create a special account specifically for your workflows. For example:
+	  - First name: Bob
+	  - Last name: Doit
+	  - Email: bob.doit@yourdomain.com
+	  - Position: Support
+	  - ...
+3. Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
 The following files will be replaced:
-  - Config/config.php
-  - Entities/Workflow.php
-  - Http/Controllers/WorkflowsController.php
+   - Config/config.php
+   - Entities/Workflow.php
+   - Http/Controllers/WorkflowsController.php
 
 ## Note
 If you have workflows that should not be associated with an existing user, it's advisable not to use this patch.
