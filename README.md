@@ -1,45 +1,41 @@
+# FreeScout Custom Workflow User
 
+This collection of files is designed to patch the original [FreeScout Workflow Module](https://freescout.net/module/workflows/).
 
-# Freescout Custom Workflow User
-This is a collection of files to patch the original [FreeScout Workflow Module](https://freescout.net/module/workflows/).
+## Why
+The original Workflow Module uses a user named "Workflow" to execute all actions. Consequently, instead of displaying the name of the actual user, you see "Workflow" as the sender's name. 
+You can alter the name in the .env file using the property WORKFLOWS_USER_FULL_NAME, but this has a few limitations. It only allows up to 20 characters, and additional settings, such as an email address, cannot be defined. As a result, signatures using variables like user.email are not displayed correctly. Additionally, when manually executing a workflow, the "Workflow" user is used instead of the user who initiated the workflow.
 
-# Why
-The original Workflow Module uses a user named "Workflow" to run all actions. So instead of a real user you get "Workflow" as the senders name. 
-You may change the name in the .env file with the property WORKFLOWS_USER_FULL_NAME but this has a couple of limitations. Only up to 20 characters are possible and no further settings like an email adress can be defined, so signatures using variables like user.email are not shown correctly.
-When running a workflow manually, this "Workflow" user will be used as well instead of the user who started the workflow.
+## What
+This brings two enhancements:
+- Define an existing user as the default user for all your automated workflows.
+- Manual workflows will use the logged-in user running the workflow task as the sender.
 
-# What
-It will bring 2 enhancements
-* Define an existing user as the default user for all your automated workflows
-* Manual workflows will use the logged in user running the workflow task as the sender.
+## Requirements
+You need a FreeScout installation and the Workflow Module installed.
 
-# Requirements
-You need a FreeScout installation and the Workflow Module being installed.
+## Installation
+- Save a copy of your "Modules/Workflows" directory so that you can easily revert to the original.
+- To define the default user used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file:
+ WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
+- Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
+The following files will be replaced:
+- Config/config.php
+- Entities/Workflow.php
+- Http/Controllers/WorkflowsController.php
 
-# Installation
-* Please save a copy of your "Modules/Workflows" directory so you may easily go back to the original.
-* To define the default user which will be used for your automated workflows, open your .env file in the root directory and add the following line anywhere in the file
-  WORKFLOWS_USER_EMAIL=existing-user@yourdomain.com
-* Copy the files from this repository's "Workflows" directory into the "Modules/Workflows" directory of your FreeScout installation. 
-The following files will be replaced
-  * Config/config.php
-  * Entities/Workflow.php
-  * Http/Controllers/WorkflowsController.php
+## Note
+If you have workflows that should not be associated with an existing user, it's advisable not to use this patch.
 
-# Note
-If you have Workflows which should not be related to an existing user, you should not use this patch.
-
-Instead of using a real users account, you may create a special account only for your workflows. Something like 
-first name: Bob 
-last name: Doit
-email: bob.doit@yourdomain.com
-position: Support
-...
+Instead of using a real user's account, you may create a special account specifically for your workflows. For example:
+- First name: Bob
+- Last name: Doit
+- Email: bob.doit@yourdomain.com
+- Position: Support
+- ...
 
 To undo this patch, use your backup.
 
-To see the actual changes to the original look [here](https://github.com/karrierekick-dev/freescout-custom-workflow-user/commit/bba3e06f98ca86e6e02e1f10977124d305541eab)
+To view the actual changes to the original, check [here](https://github.com/karrierekick-dev/freescout-custom-workflow-user/commit/bba3e06f98ca86e6e02e1f10977124d305541eab).
 
-**Have fun**
-
-
+**Have fun!**
